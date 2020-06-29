@@ -44,12 +44,33 @@ University of Oxford}
 \clearpage
 \setcounter{section}{1}
 
+% should I put the questions in too???
 \section{Character Theory}
 \subsection{}
-Here is some math
-\[
-    ...
-\]
+Let $V$ and $V'$ be the corresponding representations.
+Then $\chi + \chi'$ is the character of the direct sum $V \oplus V'$.
+The character of the alternating square is then, for any $s$ in the group,
+\begin{align*}
+    (\chi + \chi')_{\sigma} 
+    &= \frac12 ((\chi(s) + \chi'(s))^2 + \chi(s^2) +\chi'(s^2)) \\
+    &= \frac12(\chi(s)^2 + \chi(s^2)) + \frac12(\chi'(s)^2 + \chi'(s^2)) + \chi(s) \chi'(s)\\
+    &= \chi_{\sigma}^2(s) + {\chi_{\sigma}'}^2(s) + \chi(s)\chi'(s).
+\end{align*}
+We can do the same thing for the symmetric square
+\begin{align*}
+    (\chi + \chi')_{\alpha} 
+    &= \frac12 ((\chi(s) + \chi'(s))^2 - \chi(s^2) +\chi'(s^2)) \\
+    &= \frac12(\chi(s)^2 - \chi(s^2)) + \frac12(\chi'(s)^2 - \chi'(s^2)) + \chi(s) \chi'(s)\\
+    &= \chi_{\alpha}^2(s) + {\chi_{\alpha}'}^2(s) + \chi(s)\chi'(s).
+\end{align*}
+
+\subsection{}
+
+
+
+
+
+
 
 
 \nocite{*}
