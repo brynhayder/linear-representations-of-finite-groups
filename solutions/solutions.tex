@@ -29,6 +29,7 @@
 \numberwithin{Answer}{section}
 \numberwithin{Exercise}{section}
 
+
 \input{declarations.tex}
 
 \title{Solutions to Linear Representations of Finite Groups}
@@ -51,23 +52,90 @@ Let $V$ and $V'$ be the corresponding representations.
 Then $\chi + \chi'$ is the character of the direct sum $V \oplus V'$.
 The character of the alternating square is then, for any $s$ in the group,
 \begin{align*}
-    (\chi + \chi')_{\sigma} 
+    (\chi + \chi')_{\sigma}^2
     &= \frac12 ((\chi(s) + \chi'(s))^2 + \chi(s^2) +\chi'(s^2)) \\
     &= \frac12(\chi(s)^2 + \chi(s^2)) + \frac12(\chi'(s)^2 + \chi'(s^2)) + \chi(s) \chi'(s)\\
     &= \chi_{\sigma}^2(s) + {\chi_{\sigma}'}^2(s) + \chi(s)\chi'(s).
 \end{align*}
 We can do the same thing for the symmetric square
 \begin{align*}
-    (\chi + \chi')_{\alpha} 
+    (\chi + \chi')_{\alpha}^2
     &= \frac12 ((\chi(s) + \chi'(s))^2 - \chi(s^2) +\chi'(s^2)) \\
     &= \frac12(\chi(s)^2 - \chi(s^2)) + \frac12(\chi'(s)^2 - \chi'(s^2)) + \chi(s) \chi'(s)\\
     &= \chi_{\alpha}^2(s) + {\chi_{\alpha}'}^2(s) + \chi(s)\chi'(s).
 \end{align*}
 
 \subsection{}
+In the permutation representation, the matrix $\rho_s$ will be a permutation matrix, 
+with 1 at position $(i, i)$ if $i$ is fixed by $s$ and 0 on the diagonal otherwise.
+The character $\chi(s)$ is the trace of this matrix, so is the number of elements fixed by $s$.
 
+\subsection{}
+We may choose bases $\{\vec{e}_i\}$ for $V$ and $\{\vec{e}_j'\}$ $V'$ such that 
+$\langle\vec{e}_i, \vec{e}_j'\rangle = \delta_{ij}$.
+Then for any matrix $A$ we have, in the given bases,
+\[
+    \langle\rho_s x, Ax'\rangle = \sum_{ij}x_i x_j' (\rho_s)_{ki}A_{kj}.
+\]
+So the map is invariant if and only if $A = (\rho_s^{-1})^\top$. 
+We can then define a representation by $\rho_s' = (\rho_s^{-1})^\top$, 
+which is clearly a representation.
+Existence and uniqueness have therefore been established.
 
+\subsection{}
+The map $\rho_s$ is clearly linear and invertible, since the $\rho_{i, s}$ are linear and invertible.
+Further, for any $f$ in $W$
+\[
+    \rho_{st}f = \rho_{2, st} f \rho_{1, st}^{-1} = \rho_{2, s} \rho_{2, t} f \rho_{1, t}^{-1} \rho_{1, s}^{-1} = \rho_{s} \rho_t f. 
+\]
+We can then calculate the character by expanding in a basis.
+Let $f$ have components $f_{ab}$ in a basis for $W$.
+Then (using Einstein notation)
+\[
+    (\rho_s f)_{ij} = (\rho_{2, s})_{i\alpha}(\rho_{1s}^{-1})_{\beta j} f_{\alpha \beta}.
+\]
+We calculate the trace of $\rho_s$ by contraction of $\rho_s \vec{e}_{ij}$ with elements
+$\vec{e}_{kl}'$ of the dual basis, which are such that $\langle \vec{e}_{ij}, \vec{e}_{kl}'\rangle = \delta_{ij}\delta_{kl}$.
+The conclusion then follows from $\chi(s^{-1}) = \chi(s)^*$ and that $\rho_{1, s}$ is a homomorphism.
 
+\subsection{}
+The character of the unit representation is $1$, so the number of times this representation
+occurs in $\rho$ is therefore $(\chi | 1)= \frac{1}{\abs{G}} \sum_{g\in G} \chi(g)$.
+
+\subsection{}
+\begin{enumerate}[a)]
+    \item Let $\vec{e}_x$ be the basis for the permutation representation $V$. 
+        From each of the $c$ orbits, take a representative arbitrarily and denote them
+        $y_i$ $i=1, \dots, c$. For each orbit, we can construct an invariant in $V$
+        \[
+            \nu_i = \sum_{g\in G} \rho_g \vec{e}_{y_i}.
+        \]
+        Denote by $W_i$ the space spanned by $\nu_i$, which is clearly invariant under G and irreducible,
+        $W_i$ is fixed by $G$ and is hence the unit representation.
+        We can therefore decompose $V$ into the direct sum
+        \[
+            U \oplus W_1 \oplus \dots \oplus W_c.
+        \]
+        We can notice that $U$ cannot contain the unit representation. If it did, then
+        there would have to be an element of $U$ that is fixed by $G$, but this element would 
+        form n orbit, which contradicts the hypothesis.
+    \item In the permutation representation $\rho_s$ is a permutation matrix, so the character of
+        the representation $\chi(s)$ is the number of elements of $X$ that are fixed by $s$. 
+        Clearly, there must be $\chi(s)^2$ elements fixed by $\rho_s$ in $X\times X$.
+    \item
+    \begin{itemize}
+        \item i) $\iff$ ii) $G$ is doubly transitive on $X\times X$, so is transitive on $X$, so the diagonal $\Delta$ is an orbit.
+            Since $G$ is doubly transitive, $\Delta^\text{c}$ is also an orbit. So these are the only two orbits. 
+            These statements also work the other way around. 
+        \item ii) $\iff$ iii) is just part a)
+        \item iii) $\iff$ iv) is given in the hint. $\chi = 1 + \psi$ where $\psi$ is the character of $\theta$.
+            Then since $(\chi^2 | 1) = 2$ (two orbits) expanding the sqare tells us that $(\psi^2|1) = 1$. 
+            However, because $\psi$ is real valued (all of the matrices will be real in the permutation representation)
+            we see that $(\psi^2|1) = \frac1{\abs{G}} \sum_{g\in G} \psi(s) \psi(s)^* = (\psi|\psi)$. 
+            We know that if a character $\eta$ has $(\eta | \eta) = 1$ then it is the character of an irreducible representation,
+            so $\theta$ is irreducible.
+    \end{itemize}
+\end{enumerate}
 
 
 
