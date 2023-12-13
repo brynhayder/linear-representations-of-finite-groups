@@ -204,6 +204,77 @@ The proof is complete.
 \end{itemize}
 
 
+\section{Subgroups, Products and Induced Representations}
+\subsection{}
+Let $\rho$ be a representation of $G$ corresponding to the irreducible representation space $V$.
+$G$ is Abelian, therefore for any $s, t \in G$
+\[
+    \rho_t \rho_s = \rho_{ts} = \rho_{st} = \rho_{s} \rho_{t}.
+\]
+An application of Schur's lemma then tells us that $\rho_s = \lambda_s I$ is a homothety for 
+any element $s$ of $G$. 
+$V$ therefore must have dimension 1, since if it has large dimension then choosing an orthogonal basis
+for this space exhibits a direct sum decomposition of $V$ into subspaces stable under this representation of $G$. 
+
+\subsection{}
+\begin{enumerate}[a)]
+    \item The center $C$ of $G$ is an Abelian subgroup, so we know from the solution to the previous exercise
+        that $\rho$ is a homothety for any $s\in C$. Write $\rho_s = \lambda_s I$, then $\chi(s) = n \lambda_s$
+        and 
+        \[
+            \abs{\chi(s)}^2 = \chi(s) \chi(s)^* = \chi(s) \chi(s^{-1}) = n^2 \lambda_s \lambda_s^{-1} = n^2.
+        \]
+        Note that $\lambda_s$ cannot be zero because $\rho$ must be invertible. 
+    \item 
+        \[
+            \abs{G} = \sum_{s \in G} \abs{\chi(s)}^2 \ge \sum_{s \in C} \abs{\chi(s)}^2 = n^2c
+        \]
+        using part a).
+    \item \mbox{}
+        \begin{claim}
+            $\rho$ faithful $\implies$ $\rho$ an injection.
+        \end{claim}
+        \begin{proof}
+            If $\rho_s = \rho_g$ then $\rho_s^{-1} \rho_g = \rho_{s^{-1}} \rho_g = \rho_{s^{-1}g} = I$,
+            which by the hypothesis means that $s^{-1}g = e$.
+        \end{proof}
+        Consider now the set of unit modulus complex scalars $\omega_s = \frac1n \chi(s)$.
+        There are exactly $\abs{C}$ of these because $\rho$ is injective. 
+        All of these satisfy $\omega_s^{\abs{C}} = 1$ because $C$ is a group.
+        These are therefore the roots of unity, which form a cyclic group under multiplication.
+\end{enumerate}
+
+\subsection{}
+Let's take the multiplication to mean that $\chi_1 \chi_2$ is the function on $G$
+with values $\chi_1(s) \chi_2(s)$.
+This operation is clearly commutative since it returns elements of the underlying
+field of the representation space.
+We are given that $\hat{G}$ is closed under multiplication.
+From the previous exercises we know that the irreducible characters of $G$
+are of the form $\chi(s) = n \lambda_s$ where $\lambda_s \ne 0$, so these are invertible.
+This shows that $\hat{G}$ is an Abelian group.
+Now, since $G$ is Abelian we know it has exactly $\abs{G}$ conjugacy classes and
+therefore $\abs{G}$ irreducible characters.
+Since $\hat{G}$ is closed, this means that $|\hat{G}| =\abs{G}$.
+
+
+Write $\psi_x: \chi \mapsto \chi(x)$ for $x\in  G$. 
+We are told that this is an irreducible character of $\hat{G}$.
+Define multiplication on $\hat{\hat{G}}$ by $\psi_x \psi_y \chi = \chi(x) \chi(y)$.
+We can verify that $\psi_x \psi_y \chi = \chi(x) \chi(y) = \lambda_x \lambda_y = \lambda_{xy} = \chi(xy)$,
+since the irreducible representations have degree 1 because $\hat{G}$ is Abelian.
+This means that $\hat{\hat{G}}$ is an Abelian group. 
+
+Since $\hat{G}$ is an Abelian group of order $\abs{G}$, we know that it
+has $\abs{G}$ irreducible characters (with equality up to isomorphism).
+So the set $\hat{\hat{G}}$ has order at most $\abs{G}$.
+If the map $s \mapsto \psi_s$ is injective then the set $\hat{\hat{G}}$
+has size $\abs{G}$, and above we checked that this is a homomorphism.
+An injective map between two finite sets of the same size is a bijection.
+Hence, checking injectivity is enough to prove isomorphism.
+\todo[inline]{check this and prove injectivity!}
+
+
 
 \nocite{*}
 \bibliographystyle{apalike}
